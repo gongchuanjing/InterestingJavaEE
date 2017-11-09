@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>InterestingJavaEE</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <context-param>
+  	<param-name>username</param-name>
+  	<param-value>ContextParamAdmin</param-value>
+  </context-param>
+  <context-param>
+  	<param-name>password</param-name>
+  	<param-value>ContextParam12345</param-value>
+  </context-param>
+  
+  <!-- 配置一堆的监听器
+  <listener>
+  	<listener-class>tk.chuanjing.chapter20.listener.MyServletContextListener</listener-class>
+  </listener>
+  <listener>
+  	<listener-class>tk.chuanjing.chapter20.listener.MyHttpSessionListener</listener-class>
+  </listener>
+  <listener>
+  	<listener-class>tk.chuanjing.chapter20.listener.MyServletRequestListener</listener-class>
+  </listener>
+  <listener>
+  	<listener-class>tk.chuanjing.chapter20.listener.MyHttpSessionAttributeListener</listener-class>
+  </listener>
+  -->
+  
+  <!-- 配置过滤器 一个过滤器的小Demo -->
+  <filter>
+  	<filter-name>FilterDemo1</filter-name>
+  	<filter-class>tk.chuanjing.chapter21.filter.FilterDemo1</filter-class>
+  	
+  	<!-- 配置过滤器的初始化参数 -->
+  	<init-param>
+  		<param-name>name</param-name>
+  		<param-value>root</param-value>
+  	</init-param>
+  	<init-param>
+  		<param-name>password</param-name>
+  		<param-value>123</param-value>
+  	</init-param>
+  </filter>
+  
+  <filter-mapping>
+  	<filter-name>FilterDemo1</filter-name>
+  	<url-pattern>/*</url-pattern>
+  	<dispatcher>FORWARD</dispatcher>
+  	<dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+   
+  <!-- servlet接收参数的演示 -->
+  <servlet>
+    <servlet-name>ServletDemo01Param</servlet-name>
+    <servlet-class>tk.chuanjing.chapter11.servlet.ServletDemo01Param</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDemo01Param</servlet-name>
+    <url-pattern>/ServletDemo01Param</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Servlet的生命周期 -->
+  <servlet>
+    <servlet-name>ServletDemo04LifeCycle</servlet-name>
+    <servlet-class>tk.chuanjing.chapter11.servlet.ServletDemo04LifeCycle</servlet-class>
+    <!--load-on-startup>2</load-on-startup-->
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>ServletDemo04LifeCycle</servlet-name>
+  	<url-pattern>/ServletDemo04LifeCycle</url-pattern>
+  </servlet-mapping>
+  
+  <!-- ServletConfig   ServletContext  对象的使用 -->
+  <servlet>
+    <servlet-name>ServletDemo05Config</servlet-name>
+    <servlet-class>tk.chuanjing.chapter11.servlet.ServletDemo05Config</servlet-class>
+    <init-param>
+    	<param-name>username</param-name>
+    	<param-value>InitParamAdmin</param-value>
+    </init-param>
+    <init-param>
+    	<param-name>password</param-name>
+    	<param-value>InitParam12345</param-value>
+    </init-param>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletDemo05Config</servlet-name>
+    <url-pattern>/ServletDemo05Config</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 用户相关的Servlet，主要是登录 -->
+  <servlet>
+    <servlet-name>UserServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter12.login.UserServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UserServlet</servlet-name>
+    <url-pattern>/UserServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 记录访问次数的Servlet -->
+  <servlet>
+    <servlet-name>CountServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter12.login.CountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CountServlet</servlet-name>
+    <url-pattern>/CountServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 记录最后一次来访时间 -->
+  <servlet>
+    <servlet-name>CountLastVisitServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter14.cookie.CountLastVisitServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CountLastVisitServlet</servlet-name>
+    <url-pattern>/CountLastVisitServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 记录商品浏览记录 -->
+  <servlet>
+    <servlet-name>ProductServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter14.cookie.ProductServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/ProductServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 清除浏览记录 -->
+  <servlet>
+    <servlet-name>ClearServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter14.cookie.ClearServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ClearServlet</servlet-name>
+    <url-pattern>/ClearServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 转账	练习事务 -->
+  <servlet>
+    <servlet-name>AccountServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter17.transaction.AccountServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AccountServlet</servlet-name>
+    <url-pattern>/AccountServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- chapter18 商品增删改查&分页 -->
+  <servlet>
+    <servlet-name>ProductFindAllServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter18.web.servlet.ProductFindAllServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductFindAllServlet</servlet-name>
+    <url-pattern>/ProductFindAllServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProductAddServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter18.web.servlet.ProductAddServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductAddServlet</servlet-name>
+    <url-pattern>/ProductAddServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProductEditServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter18.web.servlet.ProductEditServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductEditServlet</servlet-name>
+    <url-pattern>/ProductEditServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProductUpdateServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter18.web.servlet.ProductUpdateServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductUpdateServlet</servlet-name>
+    <url-pattern>/ProductUpdateServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProductDeleteServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter18.web.servlet.ProductDeleteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductDeleteServlet</servlet-name>
+    <url-pattern>/ProductDeleteServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProductDeleteAllServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter18.web.servlet.ProductDeleteAllServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductDeleteAllServlet</servlet-name>
+    <url-pattern>/ProductDeleteAllServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProductSearchServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter18.web.servlet.ProductSearchServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductSearchServlet</servlet-name>
+    <url-pattern>/ProductSearchServlet</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ProductFindByPageServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter18.web.servlet.ProductFindByPageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductFindByPageServlet</servlet-name>
+    <url-pattern>/ProductFindByPageServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- AJAX的入门的Servlet，演示get和post -->
+  <servlet>
+    <servlet-name>AjaxGetPostDemoServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter19.ajax.AjaxGetPostDemoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjaxGetPostDemoServlet</servlet-name>
+    <url-pattern>/AjaxGetPostDemoServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- CheckUserNameServlet -->
+  <servlet>
+    <servlet-name>CheckUserNameServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter19.ajax.check_username.CheckUserNameServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckUserNameServlet</servlet-name>
+    <url-pattern>/CheckUserNameServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- CheckUserNameServlet Jquery -->
+  <servlet>
+    <servlet-name>CheckUserNameServletJquery</servlet-name>
+    <servlet-class>tk.chuanjing.chapter19.ajax.check_username.CheckUserNameServletJquery</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckUserNameServletJquery</servlet-name>
+    <url-pattern>/CheckUserNameServletJquery</url-pattern>
+  </servlet-mapping>
+  
+  <!-- JQ仿百度搜索提示 -->
+  <servlet>
+    <servlet-name>SearchWordServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter19.ajax.search_word.SearchWordServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>SearchWordServlet</servlet-name>
+    <url-pattern>/SearchWordServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 读取文件 ServletContextDemo -->
+  <servlet>
+    <servlet-name>ServletContextDemo</servlet-name>
+    <servlet-class>tk.chuanjing.chapter13.ServletContextDemo</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ServletContextDemo</servlet-name>
+    <url-pattern>/ServletContextDemo</url-pattern>
+  </servlet-mapping>
+  
+  <!-- DownloadServlet -->
+  <servlet>
+    <servlet-name>DownloadServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter13.DownloadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DownloadServlet</servlet-name>
+    <url-pattern>/DownloadServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Request Demo Servlet 使用request获得客户机的信息 -->
+  <servlet>
+    <servlet-name>RequestDemo01Servlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter13.request.RequestDemo01Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestDemo01Servlet</servlet-name>
+    <url-pattern>/RequestDemo01Servlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Request Demo Servlet 使用request解决中文乱码的问题 -->
+  <servlet>
+    <servlet-name>RequestDemo02Servlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter13.request.RequestDemo02Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RequestDemo02Servlet</servlet-name>
+    <url-pattern>/RequestDemo02Servlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- redirect And forward -->
+  <servlet-mapping>
+    <servlet-name>RedirectAndForward01Servlet</servlet-name>
+    <url-pattern>/RedirectAndForward01Servlet</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RedirectAndForward01Servlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter13.redirect_forward.RedirectAndForward01Servlet</servlet-class>
+  </servlet>
+  
+  <servlet>
+    <servlet-name>RedirectAndForward02Servlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter13.redirect_forward.RedirectAndForward02Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RedirectAndForward02Servlet</servlet-name>
+    <url-pattern>/RedirectAndForward02Servlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 注册 -->
+  <servlet>
+    <servlet-name>RegisterServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter13.register.RegisterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RegisterServlet</servlet-name>
+    <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+  
+</web-app>
