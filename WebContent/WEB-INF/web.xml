@@ -10,6 +10,18 @@
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
   
+  <!-- 
+  <session-config>
+  	<session-timeout>1</session-timeout>
+  </session-config>
+  -->
+  <!-- 
+  <error-page>
+  	<error-code>404</error-code>
+  	<location>/404page/404.html</location>
+  </error-page>
+  -->
+  
   <context-param>
   	<param-name>username</param-name>
   	<param-value>ContextParamAdmin</param-value>
@@ -34,12 +46,12 @@
   </listener>
   -->
   
-  <!-- 配置过滤器 一个过滤器的小Demo -->
+  <!-- 配置过滤器 一个过滤器的小Demo 
   <filter>
   	<filter-name>FilterDemo1</filter-name>
   	<filter-class>tk.chuanjing.chapter21.filter.FilterDemo1</filter-class>
   	
-  	<!-- 配置过滤器的初始化参数 -->
+  	配置过滤器的初始化参数 
   	<init-param>
   		<param-name>name</param-name>
   		<param-value>root</param-value>
@@ -56,6 +68,51 @@
   	<dispatcher>FORWARD</dispatcher>
   	<dispatcher>REQUEST</dispatcher>
   </filter-mapping>
+  -->
+  
+  <!-- 自动登录的过滤器 -->
+  <filter>
+  	<filter-name>AutoLoginFilter</filter-name>
+  	<filter-class>tk.chuanjing.chapter21.filter.AutoLoginFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>AutoLoginFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 通用网站的字符集编码过滤器 -->
+  <filter>
+  	<filter-name>GenericEncodingFilter</filter-name>
+  	<filter-class>tk.chuanjing.chapter21.filter.GenericEncodingFilter</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>GenericEncodingFilter</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  
+  <!-- 通用网站的字符集编码过滤器  Final版
+  <filter>
+  	<filter-name>GenericEncodingFilterFinal</filter-name>
+  	<filter-class>tk.chuanjing.chapter21.filter.GenericEncodingFilterFinal</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>GenericEncodingFilterFinal</filter-name>
+  	<url-pattern>/*</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  	<dispatcher>FORWARD</dispatcher>
+  </filter-mapping>
+  -->
+  
+  <!-- 通用网站的字符集编码过滤器  使用动态代理写的
+  <filter>
+  	<filter-name>GenericEncodingFilterProxy</filter-name>
+  	<filter-class>tk.chuanjing.chapter23.GenericEncodingFilterProxy</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>GenericEncodingFilterProxy</filter-name>
+  	<url-pattern>/*</url-pattern>
+  </filter-mapping>
+  -->
    
   <!-- servlet接收参数的演示 -->
   <servlet>
@@ -96,14 +153,14 @@
     <url-pattern>/ServletDemo05Config</url-pattern>
   </servlet-mapping>
   
-  <!-- 用户相关的Servlet，主要是登录 -->
+  <!-- 登陆的Servlet -->
   <servlet>
-    <servlet-name>UserServlet</servlet-name>
-    <servlet-class>tk.chuanjing.chapter12.login.UserServlet</servlet-class>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter12.login.LoginServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>UserServlet</servlet-name>
-    <url-pattern>/UserServlet</url-pattern>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/LoginServlet</url-pattern>
   </servlet-mapping>
   
   <!-- 记录访问次数的Servlet -->
@@ -128,22 +185,22 @@
   
   <!-- 记录商品浏览记录 -->
   <servlet>
-    <servlet-name>ProductServlet</servlet-name>
-    <servlet-class>tk.chuanjing.chapter14.cookie.ProductServlet</servlet-class>
+    <servlet-name>ProductBrowseHistoryServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter14.cookie.ProductBrowseHistoryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ProductServlet</servlet-name>
-    <url-pattern>/ProductServlet</url-pattern>
+    <servlet-name>ProductBrowseHistoryServlet</servlet-name>
+    <url-pattern>/ProductBrowseHistoryServlet</url-pattern>
   </servlet-mapping>
   
   <!-- 清除浏览记录 -->
   <servlet>
-    <servlet-name>ClearServlet</servlet-name>
-    <servlet-class>tk.chuanjing.chapter14.cookie.ClearServlet</servlet-class>
+    <servlet-name>ProductBrowseHistoryClearServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter14.cookie.ProductBrowseHistoryClearServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>ClearServlet</servlet-name>
-    <url-pattern>/ClearServlet</url-pattern>
+    <servlet-name>ProductBrowseHistoryClearServlet</servlet-name>
+    <url-pattern>/ProductBrowseHistoryClearServlet</url-pattern>
   </servlet-mapping>
   
   <!-- 转账	练习事务 -->
@@ -269,6 +326,26 @@
     <url-pattern>/SearchWordServlet</url-pattern>
   </servlet-mapping>
   
+  <!-- 省市二级联动，获得省 -->
+  <servlet>
+    <servlet-name>ProvinceAndCityGetProvinceServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter19.ajax.province_city.ProvinceAndCityGetProvinceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProvinceAndCityGetProvinceServlet</servlet-name>
+    <url-pattern>/ProvinceAndCityGetProvinceServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 省市二级联动，获得市-->
+  <servlet>
+    <servlet-name>ProvinceAndCityGetCityServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter19.ajax.province_city.ProvinceAndCityGetCityServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProvinceAndCityGetCityServlet</servlet-name>
+    <url-pattern>/ProvinceAndCityGetCityServlet</url-pattern>
+  </servlet-mapping>
+  
   <!-- 读取文件 ServletContextDemo -->
   <servlet>
     <servlet-name>ServletContextDemo</servlet-name>
@@ -336,6 +413,86 @@
   <servlet-mapping>
     <servlet-name>RegisterServlet</servlet-name>
     <url-pattern>/RegisterServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- response.getWriter().println() 和 response.getOutputStream().write() -->
+  <servlet>
+    <servlet-name>OutPutAndWriterServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter13.response.OutPutAndWriterServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>OutPutAndWriterServlet</servlet-name>
+    <url-pattern>/OutPutAndWriterServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 使用session技术的简单  购物车 -->
+  <servlet>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter15.session.CartServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/CartServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 生成验证码图片的servlet -->
+  <servlet>
+    <servlet-name>CheckCodeImgServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter15.session.CheckCodeImgServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckCodeImgServlet</servlet-name>
+    <url-pattern>/CheckCodeImgServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 登陆的servlet，带一次性验证码校验 -->
+  <servlet>
+    <servlet-name>CheckCodeImgLoginServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter15.session.CheckCodeImgLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CheckCodeImgLoginServlet</servlet-name>
+    <url-pattern>/CheckCodeImgLoginServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 使用EL、JSTL 将商品信息显示到页面 -->
+  <servlet>
+    <servlet-name>ProductShowServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter16.ProductShow.ProductShowServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ProductShowServlet</servlet-name>
+    <url-pattern>/ProductShowServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- Model2小案例 -->
+  <servlet>
+    <servlet-name>Model2Servlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter16.model.Model2Servlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Model2Servlet</servlet-name>
+    <url-pattern>/Model2Servlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 测试   通用网站的字符集编码过滤器  的Servlet -->
+  <servlet>
+    <servlet-name>TestGenericEncodingServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter21.filter.TestGenericEncodingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>TestGenericEncodingServlet</servlet-name>
+    <url-pattern>/TestGenericEncodingServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 自动登录的Servlet -->
+  <servlet>
+    <servlet-name>AutoLoginServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter21.filter.AutoLoginServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AutoLoginServlet</servlet-name>
+    <url-pattern>/AutoLoginServlet</url-pattern>
   </servlet-mapping>
   
 </web-app>
