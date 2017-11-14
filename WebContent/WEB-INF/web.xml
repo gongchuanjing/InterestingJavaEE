@@ -495,4 +495,24 @@
     <url-pattern>/AutoLoginServlet</url-pattern>
   </servlet-mapping>
   
+  <!-- 文件上传的 servlet -->
+  <servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>tk.chuanjing.chapter22.fileupload.UploadServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/UploadServlet</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 文件上传的 servlet 解决了常见问题的升级版 -->
+  <servlet>
+    <servlet-name>UploadServletPro</servlet-name>
+    <servlet-class>tk.chuanjing.chapter22.fileupload.UploadServletPro</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadServletPro</servlet-name>
+    <url-pattern>/UploadServletPro</url-pattern>
+  </servlet-mapping>
+  
 </web-app>
