@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context>
+	<Manager className="org.apache.catalina.session.PersistentManager" maxIdleSwap="1">
+		<Store className="org.apache.catalina.session.FileStore" directory="InterestingJavaEE"/>
+	</Manager>
+</Context>
+
+<!-- 
+	maxIdleSwap	:1  		1分钟session会自动序列化到硬盘.
+	directory	:JavaEE08 	序列化后存放的位置.
+ -->
