@@ -14,6 +14,8 @@ Struts2：[InterestingStruts2](https://github.com/gongchuanjing/InterestingStrut
 
 Hibernate：[InterestingHibernate](https://github.com/gongchuanjing/InterestingHibernate.git)
 
+Spring：[InterestingStruts2](https://github.com/gongchuanjing/InterestingSpring.git)
+
 ## 开发环境说明
 	eclipse：Luna Service Release 1 (4.4.1) (简称：eclipse luna-SR1_4.4.1)
 	JDK：1.8.0_92
