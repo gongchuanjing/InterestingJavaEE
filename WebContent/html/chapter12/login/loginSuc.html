@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>loginSuc</title>
+	
+    <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+    <meta http-equiv="description" content="this is my page">
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    
+    <!-- 5秒后跳转到首页 -->
+    <!-- <meta http-equiv="Refresh" content="5;url=/InterestingJavaEE/index.jsp"> -->
+    
+    <!-- 5秒后跳转到  记录访问次数的Servlet -->
+    <!-- <meta http-equiv="Refresh" content="5;url=/InterestingJavaEE/CountServlet"> -->
+    
+    <!-- 5秒后跳转到  记录上次访问时间的Servlet (chapter14的内容) -->
+    <meta http-equiv="Refresh" content="5;url=/InterestingJavaEE/CountLastVisitServlet">
+    
+   <script type="text/javascript">
+   
+   	   var time = 5;
+	   window.onload = function(){
+		   setInterval("changeTime()", 1000);
+	   };
+	   
+	   function changeTime() {
+		   time--;
+		   document.getElementById("s").innerHTML = time;
+	   };
+   </script>
+
+  </head>
+  
+  <body>
+    	<h3>登陆成功,<span id='s'>5</span>秒后跳转！</h3>
+  </body>
+</html>
