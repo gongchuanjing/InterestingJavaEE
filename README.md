@@ -12,9 +12,13 @@ JavaSE：[InterestingJavaSE](https://github.com/gongchuanjing/InterestingJavaSE.
 
 Struts2：[InterestingStruts2](https://github.com/gongchuanjing/InterestingStruts2.git)
 
+Spring：[InterestingSpring](https://github.com/gongchuanjing/InterestingSpring.git)
+
 Hibernate：[InterestingHibernate](https://github.com/gongchuanjing/InterestingHibernate.git)
 
-Spring：[InterestingStruts2](https://github.com/gongchuanjing/InterestingSpring.git)
+SSH采用XML方式整合：[InterestingSSH_XML](https://github.com/gongchuanjing/InterestingSSH_XML.git)
+
+SSH采用注解方式整合：[InterestingSSH_Annotation](https://github.com/gongchuanjing/InterestingSSH_Annotation.git)
 
 ## 开发环境说明
 	eclipse：Luna Service Release 1 (4.4.1) (简称：eclipse luna-SR1_4.4.1)
