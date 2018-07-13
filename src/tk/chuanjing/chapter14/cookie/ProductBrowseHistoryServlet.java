@@ -48,8 +48,7 @@ public class ProductBrowseHistoryServlet extends HttpServlet {
 		if (findCookie == null) {
 			// 第一次浏览商品
 			Cookie newCookie = new Cookie("history", id);
-//			newCookie.setPath("/InterestingJavaEE");
-			newCookie.setPath(request.getContextPath());
+			newCookie.setPath(request.getContextPath());//newCookie.setPath("/InterestingJavaEE");
 			newCookie.setMaxAge(60*60*24*7);
 			response.addCookie(newCookie);
 		} else {
@@ -87,7 +86,6 @@ public class ProductBrowseHistoryServlet extends HttpServlet {
 			
 			// 存入到Cookie中
 			Cookie newCookie = new Cookie("history", strHistoryIds);
-//			newCookie.setPath("/InterestingJavaEE");
 			newCookie.setPath(request.getContextPath());
 			newCookie.setMaxAge(60*60*24*7);
 			response.addCookie(newCookie);
