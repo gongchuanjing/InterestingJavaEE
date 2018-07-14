@@ -20,7 +20,6 @@ public class ProductBrowseHistoryClearServlet extends HttpServlet {
 			throws ServletException, IOException {
 
 		Cookie newCookie = new Cookie("history", null);
-//		newCookie.setPath("/InterestingJavaEE");
 		newCookie.setPath(request.getContextPath());
 		newCookie.setMaxAge(0);
 		response.addCookie(newCookie);
